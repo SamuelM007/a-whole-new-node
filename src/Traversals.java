@@ -1,4 +1,7 @@
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Traversals {
   public static void main(String[] args) {
@@ -39,5 +42,26 @@ public class Traversals {
     child3_1.children = new ArrayList<>();
     child3_1.children.add(child3_1_1);
     child3_1.children.add(child3_1_2);
+
+    Map<Integer,List<Integer>> tree = new HashMap<>();
+
+    tree.put(88,List.of(17,58,33));
+    tree.put(17,List.of(5,99));
+    tree.put(58, List.of(73));
+    tree.put(33,List.of(24,61,12));
+  }
+
+
+  //public static <T> void preorder(Node<T> node){
+  public static void preorder(Node<?> node){
+    if(node == null)return;
+
+    System.out.println(node.value);
+
+    if(node.children == null)return;
+
+    for(Node<?> child : node.children){
+      preorder(child);
+    }
   }
 }
